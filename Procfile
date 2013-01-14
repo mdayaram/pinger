@@ -1,1 +1,1 @@
-worker: run bundle exec ruby pinger.rb
+console: bundle exec ruby pinger.rb
