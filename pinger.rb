@@ -5,10 +5,12 @@ require 'syslog'
 sleep_time = 55 * 60  # 55 minutes
 
 sites = [
-  "http://noj.cc",
-  "http://i.hazasite.com",
-  "http://organs.hazasite.com",
-  "http://steroids.hazasite.com",
+  "http://nojcc.herokuapp.com",
+  "http://ihazasite.herokuapp.com",
+  "http://wiseley-organs.herokuapp.com",
+  "http://wiseley-steroids.herokuapp.com",
+  "http://headerecho.herokuapp.com",
+  "http://phoenix-tech.herokuapp.com",
   ]
 
   loop do
