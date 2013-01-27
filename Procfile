@@ -1,1 +1,1 @@
-console: bundle exec ruby pinger.rb
+pinger: bundle exec ruby pinger.rb
