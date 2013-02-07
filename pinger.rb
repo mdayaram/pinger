@@ -13,6 +13,7 @@ sites = [
   "http://wiseley-steroids.herokuapp.com",
   "http://headerecho.herokuapp.com",
   "http://phoenix-tech.herokuapp.com",
+  "http://dialup.herokuapp.com",
 ]
 
 loop do
