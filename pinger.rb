@@ -6,15 +6,7 @@ require './consts'
 
 sleep_time = 55 * 60  # 55 minutes
 
-sites = [
-  "http://nojcc.herokuapp.com",
-  "http://ihazasite.herokuapp.com",
-  "http://wiseley-organs.herokuapp.com",
-  "http://wiseley-steroids.herokuapp.com",
-  "http://headerecho.herokuapp.com",
-  "http://phoenix-tech.herokuapp.com",
-  "http://dialup.herokuapp.com",
-]
+sites = File.open(File.join(File.expand_path(File.dirname(__FILE__)), "sites.dat")).read.split
 
 loop do
   if File.exists? DEATH_FILE
@@ -24,7 +16,7 @@ loop do
   end
 
   sites.each do |s|
-    res = HTTPClient.get(s)
+    res = HTTPClient.get("http://#{s}")
     puts "* Pinged #{s} .......... #{res.status_code}"
   end
   puts "Done, sleeping for #{sleep_time}s...."
