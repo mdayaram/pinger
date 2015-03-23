@@ -5,15 +5,6 @@ require 'json'
 
 sleep_time = 55 * 60  # 55 minutes
 
-def puts(msg)
-  $stderr.puts(msg)
-end
-
-def print(msg)
-  $stderr.print(msg)
-  $stderr.flush
-end
-
 def sites
   extheader = {
     "Accept" => "application/vnd.heroku+json; version=3",
@@ -39,9 +30,9 @@ end
 
 loop do
   sites.each do |s|
-    print "* Pinged #{s} .......... "
+    puts "* Pinged #{s}"
     res = HTTPClient.get("http://#{s}")
-    puts "\r* Pinged #{s} .......... #{res.status_code}"
+    puts "........ #{res.status_code}"
   end
   puts "Done, sleeping for #{sleep_time}s...."
   sleep sleep_time
