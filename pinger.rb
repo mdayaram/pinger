@@ -1,20 +1,28 @@
 require 'rubygems'
 require 'httpclient'
 require 'syslog'
-
-require './consts'
+require 'json'
 
 sleep_time = 55 * 60  # 55 minutes
 
-sites = File.open(File.join(File.expand_path(File.dirname(__FILE__)), "sites.dat")).read.split
+def sites
+  extheader = {
+    "Accept" => "application/vnd.heroku+json; version=3",
+    "Authorization" => "Bearer #{ENV["AUTH_TOKEN"]}"
+  }
+
+  clnt = HTTPClient.new
+  res = clnt.get_content("https://api.heroku.com/apps", {}, extheader)
+  if res.status.successful?
+    parsed = json.parse(res.body)
+    s = []
+    parsed.each do |p|
+      s << "#{p["name"]}.herokuapp.com"
+    end
+  end
+end
 
 loop do
-  if File.exists? DEATH_FILE
-    puts "Found death file, killing myself..."
-    File.delete DEATH_FILE
-    exit 0
-  end
-
   sites.each do |s|
     res = HTTPClient.get("http://#{s}")
     puts "* Pinged #{s} .......... #{res.status_code}"
