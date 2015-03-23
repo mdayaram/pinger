@@ -30,9 +30,8 @@ end
 
 loop do
   sites.each do |s|
-    puts "* Pinged #{s}"
     res = HTTPClient.get("http://#{s}")
-    puts "........ #{res.status_code}"
+    puts "* Pinged #{s} ........ #{res.status_code}"
   end
   puts "Done, sleeping for #{sleep_time}s...."
   sleep sleep_time
